@@ -1,0 +1,37 @@
+{
+  "api": {
+    "port": 5000,
+    "baseURL": "/api/v1"
+  },
+  "logger": {
+    "transports": [
+      {
+        "config": {
+          "type": "transports.File",
+          "rotate": true
+        },
+        "options": {
+          "filename": "logs/filelog-error.log",
+          "handleExceptions": true,
+          "level": "error",
+          "name": "error-file",
+          "datePattern":".ddd",
+          "json": false
+        }
+      },
+      {
+        "config": {
+          "type": "transports.File",
+          "rotate": true
+        },
+        "options": {
+          "filename": "logs/filelog-info.log",
+          "level": "info",
+          "name": "info-file",
+          "datePattern":".ddd",
+          "json": false
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "invalidTransport": {
+    "config": {},
+    "options": {
+      "filename": "logs/filelog-error.log",
+      "handleExceptions": true,
+      "level": "error",
+      "name": "error-file"
+    }
+  },
+  "rotateTransport": {
+    "config": {
+      "type": "transports.File",
+      "rotate": true
+    },
+    "options": {
+      "filename": "logs/filelog-info.log",
+      "handleExceptions": true,
+      "level": "info",
+      "name": "info-file",
+      "datePattern": ".dd"
+    }
+  },
+  "noRotateTransport": {
+    "config": {
+      "type": "transports.File"
+    },
+    "options": {
+      "filename": "logs/filelog-info.log",
+      "handleExceptions": true,
+      "level": "info",
+      "name": "info-file"
+    }
+  }
+}

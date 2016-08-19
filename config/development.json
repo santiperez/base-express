@@ -1,0 +1,21 @@
+{
+  "workers": 1, 
+  "api": {
+    "port": 3000,
+    "baseURL": "/api/v1"
+  },
+  "logger": {
+    "transports": [
+      {
+        "config": {
+          "type": "transports.Console"
+        },
+        "options": {
+          "level": "debug",
+          "colorize": true,
+          "handleExceptions": true
+        }
+      }
+    ]
+  }
+}
