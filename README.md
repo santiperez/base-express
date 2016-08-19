@@ -10,22 +10,22 @@ It is important not only know the structure of your files and folders, but also 
 Let’s see what files and folders there are at the root of the project with a brief explanation of what each of them is about:  
 
 ```
-├── **config/** Contains configuration for each enviroment  
-├── **logs/** Contains the logs  
-├── **src/**  Contains the source code of the whole app  
-│   ├── **helpers/** Code and functionality to be shared by different parts of the project  
-│   ├── **middlewares/**  Express middlewares which process the incoming  requests before handling them down to the routes  
-│   ├── **models/**  Represents data, implements business logic and handles storage  
-│   ├── **routes/**  Defines your app routes and their logic  
-│   │   ├── **index.js** Configures all the routes  
-│   ├── **tools/** Three part applications, tools and libraries  
-│   ├── **cluster.js**  Configures the cluster module to easily create child processes that share server ports  
-│   ├── **index.js** Initializes the app and glues everything together  
-│   ├── **server.js** Configures and inits Express.js  
-│   ├── **package.json**  Contains all packages that your app depends on and their version, scripts...  
-├── **test/**  Contains the all the tests  
-│   ├── **acceptances/** Test the system as a whole  
-│   ├── **unit/** Test individual units of code in isolation   
+├── config/ Contains configuration for each enviroment  
+├── logs/ Contains the logs  
+├── src/  Contains the source code of the whole app  
+│   ├── helpers/ Code and functionality to be shared by different parts of the project  
+│   ├── middlewares/  Express middlewares which process the incoming  requests before handling them down to the routes  
+│   ├── models/  Represents data, implements business logic and handles storage  
+│   ├── routes/  Defines your app routes and their logic  
+│   │   ├── index.js Configures all the routes  
+│   ├── tools/ Three part applications, tools and libraries  
+│   ├── cluster.js  Configures the cluster module to easily create child processes that share server ports  
+│   ├── index.js Initializes the app and glues everything together  
+│   ├── server.js Configures and inits Express.js  
+│   ├── package.json  Contains all packages that your app depends on and their version, scripts...  
+├── test/  Contains the all the tests  
+│   ├── acceptances/ Test the system as a whole  
+│   ├── unit/ Test individual units of code in isolation   
 ```
 
 ## Development Dependencies
