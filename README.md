@@ -70,12 +70,13 @@ https://github.com/helmetjs/helmet
 
 **start**: Starts the application with the development configuration.  
 **start:uat**: Starts the application with the uat configuration.  
-**start**:production: Starts the application with the production configuration.  
+**start:production**: Starts the application with the production configuration.  
 **test**: Runs the unit tests.  
 **acceptances**: Runs the acceptances tests.  
 **lint**: Lints the /src and /test folders.  
-**lint:fix**: Fixes linting errors of the /src and /test folders.  
-**check**: Runs acceptance and unit test, lints code, and checks for npm updates.  
+**lint:fix**: Fixes linting errors of the /src and /test folders.
+**security**: Finds vulnerabilities.  
+**check**: Runs acceptance and unit tests, lints code, checks for npm updates and security.  
 
 ##Usage
 
