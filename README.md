@@ -74,7 +74,7 @@ https://github.com/helmetjs/helmet
 **test**: Runs the unit tests.  
 **acceptances**: Runs the acceptances tests.  
 **lint**: Lints the /src and /test folders.  
-**lint:fix**: Fixes linting errors of the /src and /test folders.
+**lint:fix**: Fixes linting errors of the /src and /test folders.  
 **security**: Finds vulnerabilities.  
 **check**: Runs acceptance and unit tests, lints code, checks for npm updates and security.  
 
