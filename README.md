@@ -1,4 +1,7 @@
 # Express-Base
+
+[![Build Status](https://travis-ci.org/santiperez/base-express.svg?branch=master)](https://travis-ci.org/santiperez/base-express)
+
 This repository serves as a starting point for create applications with Node.js and Express.js.
 
 It provides a simple and solid structure on which to build on. Clone it and you are ready to go.
