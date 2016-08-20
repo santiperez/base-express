@@ -1,6 +1,7 @@
 # Express-Base
 
 [![Build Status](https://travis-ci.org/santiperez/base-express.svg?branch=master)](https://travis-ci.org/santiperez/base-express)
+[![dependencies Status](https://david-dm.org/santiperez/base-express/status.svg)](https://david-dm.org/santiperez/base-express)
 [![devDependencies Status](https://david-dm.org/santiperez/base-express/dev-status.svg)](https://david-dm.org/santiperez/base-express?type=dev)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
