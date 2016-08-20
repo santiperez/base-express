@@ -10,6 +10,7 @@
     "eslint-config-standard": "^5.3.5",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.0",
+    "istanbul": "^0.4.4",
     "lodash": "^4.15.0",
     "mocha": "^3.0.2",
     "nodemon": "^1.10.2",
@@ -30,13 +31,14 @@
     "start": "NODE_ENV=development node src/index.js",
     "start:uat": "NODE_ENV=uat node src/index.js",
     "start:production": "NODE_ENV=production node src/index.js",
-    "test": "mocha test/unit/*.js",
-    "acceptances": "mocha test/acceptances/*.js",
+    "test": "mocha ./test/unit/*.js",
+    "acceptances": "mocha ./test/acceptances/*.js",
+    "coverage": "istanbul cover _mocha ./test/**/*.js",
     "watch": "nodemon src/index.js --config nodemon.json",
     "lint": "eslint --ext .js src/ && eslint --ext .js test/",
     "lint:fix": "eslint --fix src/ && eslint --fix test/",
-    "security": "./node_modules/nsp/bin/nsp  check",
-    "check": "npm run test && npm run acceptances && npm run lint && npm outdated && npm run security"
+    "security": "nsp  check",
+    "check": "npm run lint && npm run coverage && npm outdated && npm run security"
   },
   "pre-commit": [
     "check"

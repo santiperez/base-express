@@ -44,6 +44,9 @@ https://github.com/mochajs/mocha
 https://github.com/visionmedia/supertest  
 https://github.com/jhnns/rewire  
 
+###Reporting
+https://github.com/gotwarlost/istanbul
+
 ### Logging
 https://github.com/winstonjs/winston  
 https://github.com/winstonjs/winston-daily-rotate-file  
@@ -76,10 +79,11 @@ https://github.com/helmetjs/helmet
 **start:production**: Starts the application with the production configuration.  
 **test**: Runs the unit tests.  
 **acceptances**: Runs the acceptances tests.  
+**coverage**: Runs the acceptances and unit tests and creates a coverage report with Istambul.  
 **lint**: Lints the /src and /test folders.  
 **lint:fix**: Fixes linting errors of the /src and /test folders.  
 **security**: Finds vulnerabilities.  
-**check**: Runs acceptance and unit tests, lints code, checks for npm updates and security.  
+**check**: Runs coverage task, lints code, checks for npm updates and security.  
 
 ##Usage
 
@@ -92,6 +96,10 @@ process.env.NODE\_CONFIG\_DIR = path.join(__dirname, '..', 'config');
 The configuration data needs to be versioned separately to the source code. If not, a change of configuration leads to a new application build, and this is just plain wrong. Notice that for production you should add the config folder to .gitignore.  
 
 ##Basic configuration example
+
+**workers**: Number of workers to start the application.  
+**logger**: Contains the different transports for the winston logger. For log rotate in Files set transport.config.rotate to true (take a look at uat, and production configuration files).
+**test**: Tests configuration. Sets the url an path for Instanbul coverage reports.
 
 ```json
 {
@@ -113,6 +121,12 @@ The configuration data needs to be versioned separately to the source code. If n
         }
       }
     ]
+  },
+  "test":{
+    "reports":{
+      "url":"/coverage",
+      "path":"coverage/lcov-report"
+    }
   }
 }
 ```

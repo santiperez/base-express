@@ -33,5 +33,11 @@
         }
       }
     ]
+  },
+  "test":{
+    "reports":{
+      "url":"/coverage",
+      "path":"coverage/lcov-report"
+    }
   }
 }
