@@ -79,7 +79,7 @@ https://github.com/helmetjs/helmet
 **start:production**: Starts the application with the production configuration.  
 **test**: Runs the unit tests.  
 **acceptances**: Runs the acceptances tests.  
-**coverage**: Runs the acceptances and unit tests and creates a coverage report with Istambul.  
+**coverage**: Runs the acceptances and unit tests and creates a coverage report with Istanbul.  
 **lint**: Lints the /src and /test folders.  
 **lint:fix**: Fixes linting errors of the /src and /test folders.  
 **security**: Finds vulnerabilities.  
