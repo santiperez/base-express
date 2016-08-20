@@ -22,7 +22,9 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "helmet": "^2.1.2",
+    "nsp": "^2.6.1"
   },
   "scripts": {
     "start": "NODE_ENV=development node src/index.js",
@@ -33,9 +35,12 @@
     "watch": "nodemon src/index.js --config nodemon.json",
     "lint": "eslint --ext .js src/ && eslint --ext .js test/",
     "lint:fix": "eslint --fix src/ && eslint --fix test/",
-    "check": "npm run test && npm run acceptances && npm run lint && npm outdated"
+    "security": "./node_modules/nsp/bin/nsp  check",
+    "check": "npm run test && npm run acceptances && npm run lint && npm outdated && npm run security"
   },
-  "pre-commit": [ "check" ],
+  "pre-commit": [
+    "check"
+  ],
   "keywords": [
     "base",
     "project",

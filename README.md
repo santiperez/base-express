@@ -57,6 +57,10 @@ https://github.com/lorenwest/node-config
 ### GIT Hooks
 https://github.com/observing/pre-commit  
 
+### Security
+https://github.com/nodesecurity/nsp  
+https://github.com/helmetjs/helmet  
+
 ## Requirements
 
 **node version**: ^6.x.x  

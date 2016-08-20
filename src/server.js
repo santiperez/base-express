@@ -2,7 +2,8 @@
 
 var compression = require('compression')
 , express = require('express')
-, bodyParser = require('body-parser');
+, bodyParser = require('body-parser')
+, helmet = require('helmet');
 
 var logger = require ('./tools/logger');
 
@@ -20,6 +21,7 @@ function start(port, baseURL, routesFolderPath) {
 
 function init(baseURL, routesFolderPath) {
   app = express();
+  app.use(helmet());
   app.use(compression());
   app.use(bodyParser.json());
   app.use(require('./routes')(baseURL));
