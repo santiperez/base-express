@@ -2,7 +2,9 @@
 
 var compression = require('compression')
 , express = require('express')
+, methodOverride = require('method-override')
 , bodyParser = require('body-parser')
+, errorHandler = require('errorhandler')
 , path = require('path')
 , helmet = require('helmet');
 
@@ -24,14 +26,26 @@ function start(port, baseURL, routesFolderPath) {
 
 function init(baseURL, routesFolderPath) {
   app = express();
+
+  app.use(methodOverride());
   app.use(compression());
-  testReports.init(app);
-  swagger.init(app);
   app.use(helmet());
   app.use(bodyParser.json());
+
+  testReports.init(app);
+
+  swagger.init(app);
+
   app.use(require(path.join(__dirname, '../', routesFolderPath))(baseURL));
+
+  // error handling middleware should be loaded after the loading the routes
+  if (process.env.NODE_ENV == 'development') {
+    app.use(errorHandler());
+    logger.debug('Registering errorHandler middleware');
+  }
   return app;
 }
+
 module.exports = {
   app: app,
   start: start
