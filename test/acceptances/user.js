@@ -6,7 +6,7 @@ var request = require('supertest')
 var expect = chai.expect;
 
 var server = rewire('../../src/server');
-var app = server.__get__('init')('/api/v1');
+var app = server.__get__('init')('/api/v1', './src/routes');
 
 describe('GET /users', () => {
   it('should respond with 200 code and an array with 2 users', (done) => {

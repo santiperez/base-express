@@ -1,9 +1,10 @@
 'use strict';
 
-var fs = require('fs');
+var fs = require('fs')
+, path = require('path');
 
-function directoryExists(directory, cb) {
-  fs.stat(directory, function(err, stats) {
+function directoryExists(dir, cb) {
+  fs.stat(dir, function(err, stats) {
     if (err && (err.errno === 34 || err.errno === 2 || err.code === 'ENOENT')) {
       cb(null, false);
     } else {
@@ -12,6 +13,23 @@ function directoryExists(directory, cb) {
   });
 }
 
+
+function readFilesFromDir(dir, cb) {
+  fs.readdir(dir, function(err, files) {
+    if (err) {
+      cb(err);
+    }
+
+    files = files.map(function(file) {
+      return path.join(dir, file);
+    }).filter(function(file) {
+      return fs.statSync(file).isFile();
+    });
+    cb(null, files);
+  });
+}
+
 module.exports = {
-  directoryExists: directoryExists
+  directoryExists: directoryExists,
+  readFilesFromDir: readFilesFromDir
 };

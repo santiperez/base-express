@@ -1,7 +1,11 @@
 {
   "api": {
+    "protocol":"http",
+    "domain":"localhost",
     "port": 4000,
-    "baseURL": "/api/v1"
+    "baseURL": "/api/v1",
+    "version": "0.0.1",
+    "routesFolder": "./src/routes"
   },
   "logger": {
     "transports": [
@@ -12,7 +16,6 @@
         },
         "options": {
           "filename": "logs/filelog-error.log",
-          "handleExceptions": true,
           "level": "error",
           "name": "error-file",
           "datePattern":".dd",
@@ -33,5 +36,15 @@
         }
       }
     ]
+  },
+  "test":{
+    "reports":{
+      "url":"/coverage",
+      "path":"./src/public/coverage/lcov-report"
+    }
+  },
+  "swagger":{
+    "url":"/swagger",
+    "path":"./src/public/swagger"
   }
 }

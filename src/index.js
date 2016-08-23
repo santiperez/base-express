@@ -4,8 +4,7 @@ var path = require('path')
 , config = require('config');
 
 var cluster = require('./cluster')
-, server = require('./server')
-, logger = require('./tools/logger');
+, server = require('./server');
 
 
 start();
@@ -15,16 +14,7 @@ function start() {
   const port = config.get('api.port');
   const baseURL = config.has('api.baseURL') ? config.api.baseURL : '';
   const routesFolder = config.has('api.routesFolder')
-  ? config.api.routesFolder : './routes';
+  ? config.api.routesFolder : './src/routes';
 
-  registerUncaughtException();
   cluster.start(server.start, [port, baseURL, routesFolder], config.workers);
-}
-
-function registerUncaughtException() {
-  process.on('uncaughtException', (err) => {
-    logger.error(' uncaughtException:', err.message);
-    logger.error(err.stack);
-    process.exit(1);
-  });
 }

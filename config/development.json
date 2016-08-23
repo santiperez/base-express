@@ -1,8 +1,12 @@
 {
-  "workers": 1, 
+  "workers": 1,
   "api": {
+    "protocol":"http",
+    "domain":"localhost",
     "port": 3000,
-    "baseURL": "/api/v1"
+    "baseURL": "/api/v1",
+    "version": "0.0.1",
+    "routesFolder": "./src/routes"
   },
   "logger": {
     "transports": [
@@ -12,8 +16,7 @@
         },
         "options": {
           "level": "debug",
-          "colorize": true,
-          "handleExceptions": true
+          "colorize": true
         }
       }
     ]
@@ -21,7 +24,11 @@
   "test":{
     "reports":{
       "url":"/coverage",
-      "path":"coverage/lcov-report"
+      "path":"./src/public/coverage/lcov-report"
     }
+  },
+  "swagger":{
+    "url":"/swagger",
+    "path":"./src/public/swagger"
   }
 }

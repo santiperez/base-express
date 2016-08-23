@@ -1,20 +1,24 @@
 'use strict';
 
 var express = require('express')
+, path = require('path')
 , _ = require('lodash');
 
-var logger = require('../tools/logger');
+var logger = require('../tools/logger')
+, routesHelper = require('../helpers/routes');
 
 module.exports = (baseURL) => {
   var router = express.Router();
 
-  router.use(baseURL, require('./time'));
-  router.use(baseURL, require('./user'));
+  routesHelper.getRouteFiles((err, files) => {
+    files.forEach((file) => {
+      router.use(baseURL, require(path.join('..', '..', file)));
+    });
 
-  listRoutes(router).map((route) => {
-    logger.info('Registering route ', route, '...');
+    listRoutes(router).map((route) => {
+      logger.debug('Registering route ', route, '...');
+    });
   });
-
   return router;
 };
 

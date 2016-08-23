@@ -3,15 +3,17 @@
 var compression = require('compression')
 , express = require('express')
 , bodyParser = require('body-parser')
+, path = require('path')
 , helmet = require('helmet');
 
 var logger = require('./tools/logger')
-, testReports = require('./tools/test-reports');
+, testReports = require('./tools/test-reports')
+, swagger = require('./tools/swagger');
 
 var app;
 
 function start(port, baseURL, routesFolderPath) {
-  init(baseURL);
+  init(baseURL, routesFolderPath);
   app.listen(port, () => {
     const message = `is listening to all incoming requests in port ${port}`;
     logger.info('Process', process.pid, message);
@@ -22,11 +24,12 @@ function start(port, baseURL, routesFolderPath) {
 
 function init(baseURL, routesFolderPath) {
   app = express();
-  testReports.init(app);
-  app.use(helmet());
   app.use(compression());
+  testReports.init(app);
+  swagger.init(app);
+  app.use(helmet());
   app.use(bodyParser.json());
-  app.use(require('./routes')(baseURL));
+  app.use(require(path.join(__dirname, '../', routesFolderPath))(baseURL));
   return app;
 }
 module.exports = {
