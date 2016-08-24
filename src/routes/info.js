@@ -28,7 +28,8 @@ router.get('/information', (req, res) => {
     version: config.get('api.version')
   };
   if (configHelper.apiConfigIsValid()) {
-    info.url = configHelper.getApiUrl();
+    info.baseUrl = configHelper.getApiBaseUrl();
+    info.name = configHelper.getApiName();
   }
   res.json(info);
 });
@@ -44,7 +45,10 @@ module.exports = router;
  *       version:
  *         type: "string"
  *         defaultValue: "0.0.1"
- *         url: "string"
- *         defaultValue: "http://domain:port/api/"
- *
+ *       baseUrl:
+ *         type: "string"
+ *         defaultValue: "/api/v1"
+ *       name:
+ *         type: "string"
+ *         defaultValue: "Express Base"
  */

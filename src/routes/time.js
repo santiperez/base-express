@@ -37,5 +37,4 @@ module.exports = router;
  *         format: "date-time"
  *         defaultValue: "2016-08-23T08:52:14.084Z"
  *         required: true
- *
  */

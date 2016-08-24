@@ -15,8 +15,9 @@ function init(app) {
 
     const swaggerURL = config.get('swagger.url');
     const urlBasePath = configHelper.getApiUrl();
+    const apiUrl = configHelper.getApiRootUrl();
 
-    logger.info(`Initializing swagger ${urlBasePath}${swaggerURL} ...`);
+    logger.info(`Initializing swagger ${apiUrl}${swaggerURL} ...`);
 
     app.use(swaggerURL, express.static(config.get('swagger.path')));
 

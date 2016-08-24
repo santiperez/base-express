@@ -1,11 +1,12 @@
 {
   "api": {
-    "protocol":"http",
+    "protocol":"https",
     "domain":"localhost",
     "port": 5000,
-    "baseURL": "/api/v1",
+    "baseUrl": "/api/v1",
     "version": "0.0.1",
-    "routesFolder": "./src/routes"
+    "routesFolder": "./src/routes",
+    "name": "Express Base"
   },
   "logger": {
     "transports": [
@@ -36,15 +37,5 @@
         }
       }
     ]
-  },
- "test":{
-    "reports":{
-      "url":"/coverage",
-      "path":"./src/public/coverage/lcov-report"
-    }
-  },
-  "swagger":{
-    "url":"/swagger",
-    "path":"./src/public/swagger"
   }
 }

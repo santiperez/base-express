@@ -6,6 +6,7 @@ var compression = require('compression')
 , bodyParser = require('body-parser')
 , errorHandler = require('errorhandler')
 , path = require('path')
+, fs = require('fs')
 , helmet = require('helmet');
 
 var logger = require('./tools/logger')
@@ -14,9 +15,11 @@ var logger = require('./tools/logger')
 
 var app;
 
-function start(port, baseURL, routesFolderPath) {
-  init(baseURL, routesFolderPath);
-  app.listen(port, () => {
+function start(port, protocol, baseUrl, routesFolderPath) {
+  init(baseUrl, routesFolderPath);
+  var http = require(protocol);
+  const params = (protocol == 'https') ? [getSSLOptions(), app] : [app];
+  http.createServer.apply(this, params).listen(port, () => {
     const message = `is listening to all incoming requests in port ${port}`;
     logger.info('Process', process.pid, message);
   }).on('error', function(err) {
@@ -24,7 +27,8 @@ function start(port, baseURL, routesFolderPath) {
   });
 }
 
-function init(baseURL, routesFolderPath) {
+
+function init(baseUrl, routesFolderPath) {
   app = express();
 
   app.use(methodOverride());
@@ -36,7 +40,7 @@ function init(baseURL, routesFolderPath) {
 
   swagger.init(app);
 
-  app.use(require(path.join(__dirname, '../', routesFolderPath))(baseURL));
+  app.use(require(path.join(__dirname, '../', routesFolderPath))(baseUrl));
 
   // error handling middleware should be loaded after the loading the routes
   if (process.env.NODE_ENV == 'development') {
@@ -44,6 +48,13 @@ function init(baseURL, routesFolderPath) {
     logger.debug('Registering errorHandler middleware');
   }
   return app;
+}
+
+function getSSLOptions() {
+  return {
+    key: fs.readFileSync('config/certificates/agent2-key.pem'),
+    cert: fs.readFileSync('config/certificates/agent2-cert.pem')
+  };
 }
 
 module.exports = {

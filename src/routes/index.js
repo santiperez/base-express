@@ -7,12 +7,12 @@ var express = require('express')
 var logger = require('../tools/logger')
 , routesHelper = require('../helpers/routes');
 
-module.exports = (baseURL) => {
+module.exports = (baseUrl) => {
   var router = express.Router();
 
   routesHelper.getRouteFiles((err, files) => {
     files.forEach((file) => {
-      router.use(baseURL, require(path.join('..', '..', file)));
+      router.use(baseUrl, require(path.join('..', '..', file)));
     });
 
     listRoutes(router).map((route) => {
