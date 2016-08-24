@@ -1,7 +1,7 @@
 {
   "workers": 1,
   "api": {
-    "protocol":"https",
+    "protocol":"http",
     "domain":"localhost",
     "port": 3000,
     "baseUrl": "/api/v1",

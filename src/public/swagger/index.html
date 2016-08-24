@@ -24,43 +24,53 @@
 
   <script type="text/javascript">
     $(function () {
-      window.swaggerUi = new SwaggerUi({
-      url: "/api/v1/api-docs.json",
-      dom_id: "swagger-ui-container",
-      supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
-      onComplete: function(swaggerApi, swaggerUi){
-        log("Loaded SwaggerUI");
+      $.get("/information", function(data, status){
+        load(data);
+      }).fail(function() {
+        console.log('Error getting /information');
+        load();
+      });
+    function load(data){
+        var apiBaseUrl = (data && data.baseUrl) ? data.baseUrl :'';
+        var name = (data && data.name) ? data.name :'';
+        window.swaggerUi = new SwaggerUi({
+        url: apiBaseUrl+"/api-docs.json",
+        dom_id: "swagger-ui-container",
+        supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
+        onComplete: function(swaggerApi, swaggerUi){
+          log("Loaded SwaggerUI");
 
-        if(typeof initOAuth == "function") {
-          /*
-          initOAuth({
-            clientId: "your-client-id",
-            realm: "your-realms",
-            appName: "your-app-name"
+          if(typeof initOAuth == "function") {
+            /*
+            initOAuth({
+              clientId: "your-client-id",
+              realm: "your-realms",
+              appName: "your-app-name"
+            });
+            */
+          }
+          $('pre code').each(function(i, e) {
+            hljs.highlightBlock(e)
           });
-          */
-        }
-        $('pre code').each(function(i, e) {
-          hljs.highlightBlock(e)
-        });
-      },
-      onFailure: function(data) {
-        log("Unable to Load SwaggerUI");
-      },
-      docExpansion: "none",
-      sorter : "alpha"
-    });
+        },
+        onFailure: function(data) {
+          log("Unable to Load SwaggerUI");
+        },
+        docExpansion: "none",
+        sorter : "alpha"
+      });
 
-    $('#input_apiKey').change(function() {
-      var key = $('#input_apiKey')[0].value;
-      log("key: " + key);
-      if(key && key.trim() != "") {
-        log("added key " + key);
-        window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
-      }
-    })
-    $('#logo').text('Express Base');
-    window.swaggerUi.load();
+      $('#input_apiKey').change(function() {
+        var key = $('#input_apiKey')[0].value;
+        log("key: " + key);
+        if(key && key.trim() != "") {
+          log("added key " + key);
+          window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
+        }
+      })
+      $('#logo').text(name);
+      window.swaggerUi.load();
+    }
   });
   </script>
 </head>
