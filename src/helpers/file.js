@@ -13,7 +13,6 @@ function directoryExists(dir, cb) {
   });
 }
 
-
 function readFilesFromDir(dir, cb) {
   fs.readdir(dir, function(err, files) {
     if (err) {

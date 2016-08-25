@@ -2,9 +2,11 @@
 
 var _ = require('lodash')
 , config = require('config')
-, path = require('path');
+, path = require('path')
+, express = require('express');
 
 var fileHelper = require('./file');
+var configHelper = require('./config');
 
 const routesFolder = config.has('api.routesFolder')
 ? config.api.routesFolder : './src/routes';
@@ -26,6 +28,22 @@ function excludeRouteFiles(files) {
   return files;
 }
 
+function addInformationRoute() {
+  var router = express.Router();
+  router.get('/information', (req, res) => {
+    const info = {
+      version: config.get('api.version')
+    };
+
+    info.baseUrl = configHelper.getApiBaseUrl();
+    info.name = configHelper.getApiName();
+
+    res.json(info);
+  });
+  return router;
+}
+
 module.exports = {
-  getRouteFiles: getRouteFiles
+  getRouteFiles: getRouteFiles,
+  addInformationRoute: addInformationRoute
 };

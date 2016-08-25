@@ -20,7 +20,7 @@ function init(app) {
       logger.info(`Initializing swagger ${apiUrl}${swaggerURL} ...`);
 
       app.use(swaggerURL, express.static(config.get('swagger.path')));
-      app.use('', configHelper.addInformationRoute());
+      app.use('', routesHelper.addInformationRoute());
 
       let message = 'Registering route GET /information ';
       message += 'to support dynamic swagger configuration';

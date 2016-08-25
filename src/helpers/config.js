@@ -1,7 +1,6 @@
 'use strict';
 
 var config = require('config');
-var express = require('express');
 
 function getApiUrl() {
   let urlBasePath = getApiRootUrl();
@@ -41,21 +40,6 @@ function swaggerConfigIsValid() {
   return config.has('swagger.url') && config.has('swagger.path');
 }
 
-function addInformationRoute() {
-  var router = express.Router();
-  router.get('/information', (req, res) => {
-    const info = {
-      version: config.get('api.version')
-    };
-
-    info.baseUrl = getApiBaseUrl();
-    info.name = getApiName();
-
-    res.json(info);
-  });
-  return router;
-}
-
 module.exports = {
   getApiUrl: getApiUrl,
   getApiRootUrl: getApiRootUrl,
@@ -64,6 +48,5 @@ module.exports = {
   getApiName: getApiName,
   getRoutesFolder: getRoutesFolder,
   apiConfigIsValid: apiConfigIsValid,
-  swaggerConfigIsValid: swaggerConfigIsValid,
-  addInformationRoute: addInformationRoute
+  swaggerConfigIsValid: swaggerConfigIsValid
 };
