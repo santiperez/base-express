@@ -14,11 +14,15 @@ var logger = require('./tools/logger')
 , swagger = require('./tools/swagger');
 
 var app;
+const sslOptions = {
+  key: fs.readFileSync('config/certificates/agent2-key.pem'),
+  cert: fs.readFileSync('config/certificates/agent2-cert.pem')
+};
 
 function start(port, protocol, baseUrl, routesFolderPath) {
   init(baseUrl, routesFolderPath);
   var http = require(protocol);
-  const params = (protocol == 'https') ? [getSSLOptions(), app] : [app];
+  const params = (protocol == 'https') ? [sslOptions, app] : [app];
   http.createServer.apply(this, params).listen(port, () => {
     const message = `is listening to all incoming requests in port ${port}`;
     logger.info('Process', process.pid, message);
@@ -48,13 +52,6 @@ function init(baseUrl, routesFolderPath) {
     logger.debug('Registering errorHandler middleware');
   }
   return app;
-}
-
-function getSSLOptions() {
-  return {
-    key: fs.readFileSync('config/certificates/agent2-key.pem'),
-    cert: fs.readFileSync('config/certificates/agent2-cert.pem')
-  };
 }
 
 module.exports = {
