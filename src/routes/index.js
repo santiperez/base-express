@@ -11,6 +11,10 @@ module.exports = (baseUrl) => {
   var router = express.Router();
 
   routesHelper.getRouteFiles((err, files) => {
+    if (err) {
+      logger.error(`Error getting routes. No routes added. error: ${err}`);
+    }
+
     files.forEach((file) => {
       router.use(baseUrl, require(path.join('..', '..', file)));
     });

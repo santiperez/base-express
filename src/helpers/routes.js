@@ -5,16 +5,16 @@ var _ = require('lodash')
 , path = require('path')
 , express = require('express');
 
-var fileHelper = require('./file');
-var configHelper = require('./config');
+var fileHelper = require('./file')
+, configHelper = require('./config');
 
-const routesFolder = config.has('api.routesFolder')
+var routesFolder = config.has('api.routesFolder')
 ? config.api.routesFolder : './src/routes';
 
 function getRouteFiles(cb) {
   fileHelper.getFilesFromDir(routesFolder, (err, files) => {
     if (err) {
-      cb(err);
+      cb(null, []);
     }
     cb(null, excludeRouteFiles(files));
   });
@@ -31,13 +31,11 @@ function excludeRouteFiles(files) {
 function addInformationRoute() {
   var router = express.Router();
   router.get('/information', (req, res) => {
-    const info = {
-      version: config.get('api.version')
+    var info = {
+      version: config.get('api.version'),
+      baseUrl: configHelper.getApiBaseUrl(),
+      name: configHelper.getApiName()
     };
-
-    info.baseUrl = configHelper.getApiBaseUrl();
-    info.name = configHelper.getApiName();
-
     res.json(info);
   });
   return router;
