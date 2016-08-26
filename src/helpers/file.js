@@ -13,7 +13,7 @@ function directoryExists(dir, cb) {
   });
 }
 
-function readFilesFromDir(dir, cb) {
+function getFilesFromDir(dir, cb) {
   fs.readdir(dir, function(err, files) {
     if (err) {
       cb(err);
@@ -30,5 +30,5 @@ function readFilesFromDir(dir, cb) {
 
 module.exports = {
   directoryExists: directoryExists,
-  readFilesFromDir: readFilesFromDir
+  getFilesFromDir: getFilesFromDir
 };

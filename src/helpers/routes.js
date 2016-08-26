@@ -12,7 +12,7 @@ const routesFolder = config.has('api.routesFolder')
 ? config.api.routesFolder : './src/routes';
 
 function getRouteFiles(cb) {
-  fileHelper.readFilesFromDir(routesFolder, (err, files) => {
+  fileHelper.getFilesFromDir(routesFolder, (err, files) => {
     if (err) {
       cb(err);
     }
