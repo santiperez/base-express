@@ -67,7 +67,7 @@ The configuration data needs to be versioned separately to the source code. If n
 **workers**: Number of workers to start the application.  
 **logger**: Contains the different transports for the winston logger. For log rotate in Files set transport.config.rotate to true (take a look at uat, and production configuration files).  
 **test**: Tests configuration. Sets the url an path for Instanbul coverage reports.  
-**swagger: Swagger configuration. Sets the url an path for API documentation.
+**swagger**: Swagger configuration. Sets the url an path for API documentation.
 
 ```json
 {
