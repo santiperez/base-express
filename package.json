@@ -1,7 +1,7 @@
 {
   "name": "base-express",
   "version": "0.0.1",
-  "description": "Basic structure for Express web apps.",
+  "description": "Example to create APIs with Node.js and Express.js based on TDD development methodology",
   "main": "index.js",
   "devDependencies": {
     "chai": "^3.5.0",
@@ -48,11 +48,12 @@
     "check"
   ],
   "keywords": [
-    "base",
     "project",
     "node",
     "express",
-    "structure"
+    "structure",
+    "TDD",
+    "Testing",
   ],
   "author": "Santi Perez <santi.perez.fernandez@gmail.com>",
   "license": "MIT"
