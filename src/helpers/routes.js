@@ -23,7 +23,7 @@ function getRouteFiles(cb) {
 function excludeRouteFiles(files) {
   _.remove(files, function(file) {
     return file === path.join(routesFolder, 'index.js') ||
-    file === path.join(routesFolder, 'info.js') ;
+    path.extname(file) !== '.js' ;
   });
   return files;
 }
