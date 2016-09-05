@@ -4,7 +4,7 @@ var fs = require('fs')
 , path = require('path');
 
 function directoryExists(dir, cb) {
-  fs.stat(dir, function(err, stats) {
+  fs.stat(dir, function(err) {
     if (err && (err.errno === 34 || err.errno === 2 || err.code === 'ENOENT')) {
       cb(null, false);
     } else {

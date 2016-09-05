@@ -22,7 +22,7 @@ const sslOptions = {
 function start(port, protocol, baseUrl, routesFolderPath) {
   init(baseUrl, routesFolderPath);
   var http = require(protocol);
-  const params = (protocol == 'https') ? [sslOptions, app] : [app];
+  const params = (protocol === 'https') ? [sslOptions, app] : [app];
   http.createServer.apply(this, params).listen(port, () => {
     const message = `is listening to all incoming requests in port ${port}`;
     logger.info('Process', process.pid, message);
@@ -47,7 +47,7 @@ function init(baseUrl, routesFolderPath) {
   app.use(require(path.join(__dirname, '../', routesFolderPath))(baseUrl));
 
   // error handling middleware should be loaded after the loading the routes
-  if (process.env.NODE_ENV == 'development') {
+  if (process.env.NODE_ENV === 'development') {
     app.use(errorHandler());
     logger.debug('Registering errorHandler middleware');
   }

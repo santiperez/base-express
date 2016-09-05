@@ -2,3 +2,4 @@ node_modules
 logs
 src/public/coverage
 npm-debug.log*
+.sonar
