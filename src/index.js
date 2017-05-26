@@ -3,8 +3,7 @@
 var path = require('path')
 , config = require('config');
 
-var cluster = require('./cluster')
-, server = require('./server')
+var server = require('./server')
 , configHelper = require('./helpers/config');
 
 
@@ -18,6 +17,5 @@ function start() {
   const routesFolder = configHelper.getRoutesFolder();
   const protocol = configHelper.getApiProtocol();
 
-  const params = [port, protocol, baseUrl, routesFolder];
-  cluster.start(server.start, params, config.workers);
+  server.start(port, protocol, baseUrl, routesFolder);
 }

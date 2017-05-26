@@ -5,7 +5,7 @@
 [![devDependencies Status](https://david-dm.org/santiperez/base-express/dev-status.svg)](https://david-dm.org/santiperez/base-express?type=dev)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-This repository serves as a starting point for create APIs with Node.js and Express.js based on TDD development methodology. 
+This repository serves as a starting point for create APIs with Node.js and Express.js. 
 
 It provides a simple and solid structure on which to build on. Clone it and you are ready to go.
 
@@ -52,7 +52,7 @@ Let’s see what files and folders there are at the root of the project with a b
 **security**: Finds vulnerabilities.  
 **check**: Runs coverage task, lints code, checks for npm updates and security.  
 
-##Usage
+## Usage
 
 Set the environment variable **NODE\_CONFIG\_DIR** for the configuration folder path.   
 
@@ -62,16 +62,14 @@ process.env.NODE\_CONFIG\_DIR = path.join(__dirname, '..', 'config');
 
 The configuration data needs to be versioned separately to the source code. If not, a change of configuration leads to a new application build, and this is just plain wrong. Notice that for production you should add the config folder to .gitignore.  
 
-##Basic configuration example
+## Basic configuration example
 
-**workers**: Number of workers to start the application.  
 **logger**: Contains the different transports for the winston logger. For log rotate in Files set transport.config.rotate to true (take a look at uat, and production configuration files).  
 **test**: Tests configuration. Sets the url an path for Instanbul coverage reports.  
 **swagger**: Swagger configuration. Sets the url an path for API documentation.
 
 ```json
 {
-  "workers": 1,
   "api": {
     "protocol":"http",
     "domain":"localhost",
@@ -117,10 +115,10 @@ https://github.com/mochajs/mocha
 https://github.com/visionmedia/supertest  
 https://github.com/jhnns/rewire  
 
-###Reporting
+### Reporting
 https://github.com/gotwarlost/istanbul
 
-###Documentation
+### Documentation
 https://github.com/fliptoo/swagger-express
 
 ### Logging
