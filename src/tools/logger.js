@@ -57,10 +57,8 @@ function getDefaultOptions(options) {
         date.getSeconds();
     },
     formatter: function(options) {
-      const pid = (config.workers && config.workers === 1) ?
-      '' : `${process.pid} `;
       const level = options.level;
-      let result = `${options.timestamp()} ${pid}`;
+      let result = `${options.timestamp()}`;
       result += `${winston.config.colorize(level, level.toUpperCase())}`;
       result += ` ${(undefined !== options.message ? options.message : '')}`;
       result += (options.meta && Object.keys(options.meta).length ? '\n\t' +
