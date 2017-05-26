@@ -14,7 +14,7 @@ describe('GET /users', () => {
       .get('/api/v1/users')
       .set('Accept', 'application/json')
       .expect(200)
-      .end(function(err, res) {
+      .end((err, res) => {
         expect(res.body).to.be.an('Array');
         expect(res.body.length).to.equal(2);
         if (err) {
@@ -25,13 +25,13 @@ describe('GET /users', () => {
   });
 });
 
-describe('GET /user/:id', function() {
+describe('GET /user/:id', () => {
   it('should respond with 200 status code and 1 user object', (done) => {
     request(app)
       .get('/api/v1/user/0')
       .set('Accept', 'application/json')
       .expect(200)
-      .end(function(err, res) {
+      .end((err, res) => {
         expect(res.body).to.be.an('Object');
         expect(res.body).to.have.property('username');
         if (err) {
@@ -46,7 +46,7 @@ describe('GET /user/:id', function() {
       .get('/api/v1/user/x')
       .set('Accept', 'application/json')
       .expect(404)
-      .end(function(err, res) {
+      .end((err, res) => {
         expect(res.body).to.be.empty;
         if (err) {
           return done(err);

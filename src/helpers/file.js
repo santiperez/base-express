@@ -4,7 +4,7 @@ var fs = require('fs')
 , path = require('path');
 
 function directoryExists(dir, cb) {
-  fs.stat(dir, function(err) {
+  fs.stat(dir, (err) => {
     if (err && (err.errno === 34 || err.errno === 2 || err.code === 'ENOENT')) {
       cb(null, false);
     } else {
@@ -14,14 +14,14 @@ function directoryExists(dir, cb) {
 }
 
 function getFilesFromDir(dir, cb) {
-  fs.readdir(dir, function(err, files) {
+  fs.readdir(dir, (err, files) => {
     if (err) {
       cb(err);
     }
 
-    files = files.map(function(file) {
+    files = files.map((file) => {
       return path.join(dir, file);
-    }).filter(function(file) {
+    }).filter((file) => {
       return fs.statSync(file).isFile();
     });
     cb(null, files);

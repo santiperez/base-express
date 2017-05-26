@@ -21,7 +21,7 @@ function getRouteFiles(cb) {
 }
 
 function excludeRouteFiles(files) {
-  _.remove(files, function(file) {
+  _.remove(files, (file) => {
     return file === path.join(routesFolder, 'index.js') ||
     path.extname(file) !== '.js' ;
   });
