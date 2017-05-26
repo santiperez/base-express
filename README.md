@@ -5,7 +5,7 @@
 [![devDependencies Status](https://david-dm.org/santiperez/base-express/dev-status.svg)](https://david-dm.org/santiperez/base-express?type=dev)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-This repository serves as a starting point for create APIs with Node.js and Express.js based on TDD development methodology. 
+This repository serves as a starting point for create APIs with Node.js and Express.js. 
 
 It provides a simple and solid structure on which to build on. Clone it and you are ready to go.
 
