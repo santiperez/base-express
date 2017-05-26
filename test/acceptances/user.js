@@ -15,7 +15,7 @@ describe('GET /users', () => {
       .set('Accept', 'application/json')
       .expect(200)
       .end(function(err, res) {
-        expect(res.body).to.be.an.Array;
+        expect(res.body).to.be.an('Array');
         expect(res.body.length).to.equal(2);
         if (err) {
           return done(err);
@@ -32,7 +32,7 @@ describe('GET /user/:id', function() {
       .set('Accept', 'application/json')
       .expect(200)
       .end(function(err, res) {
-        expect(res.body).to.be.an.Object;
+        expect(res.body).to.be.an('Object');
         expect(res.body).to.have.property('username');
         if (err) {
           return done(err);
