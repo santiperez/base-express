@@ -89,3 +89,4 @@ rules:
   no-this-before-super: 2
   prefer-const: 2
   template-curly-spacing: 2
+  prefer-arrow-callback: 'error'

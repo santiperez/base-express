@@ -26,7 +26,7 @@ function start(port, protocol, baseUrl, routesFolderPath) {
   http.createServer.apply(this, params).listen(port, () => {
     const message = `is listening to all incoming requests in port ${port}`;
     logger.info('Process', process.pid, message);
-  }).on('error', function(err) {
+  }).on('error', (err) => {
     logger.error(err.message);
   });
 }

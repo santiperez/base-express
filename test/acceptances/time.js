@@ -14,7 +14,7 @@ describe('GET /time', () => {
       .get('/api/v1/time')
       .set('Accept', 'application/json')
       .expect(200)
-      .end(function(err, res) {
+      .end((err, res) => {
         expect(new Date(res.body.time)).to.be.a('Date');
         if (err) {
           return done(err);
